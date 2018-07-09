@@ -7,3 +7,8 @@ eureka:
 spring:
   application:
     name: zone-user
+  datasource:
+    url: jdbc:mysql://localhost:3306/zone_user?characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver

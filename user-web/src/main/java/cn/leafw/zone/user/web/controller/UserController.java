@@ -1,7 +1,8 @@
 package cn.leafw.zone.user.web.controller;
 
-import cn.leafw.zone.user.api.dto.ResponseDto;
-import cn.leafw.zone.user.api.dto.UserDto;
+import cn.leafw.zone.user.api.dto.*;
+import cn.leafw.zone.user.api.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/queryUserByUserName/{userName}",method = RequestMethod.GET)
     public ResponseDto queryUserByUserName(@PathVariable(value = "userName") String userName){
         return ResponseDto.instance(userName);
@@ -22,8 +26,18 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResponseDto login(@RequestBody UserDto userDto){
-        return ResponseDto.instance(userDto);
+        UserResultDto userResultDto = new UserResultDto();
+        userResultDto.setToken("---");
+        return ResponseDto.instance(userResultDto);
     }
+
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    public ResponseDto logout(){
+        UserResultDto userResultDto = new UserResultDto();
+        userResultDto.setToken("---");
+        return ResponseDto.instance(userResultDto);
+    }
+
 
     @RequestMapping(value = "/info",method = RequestMethod.GET)
     public ResponseDto info(@RequestParam(value = "token") String token){
@@ -34,5 +48,11 @@ public class UserController {
         userDto.setRoles(roles);
         userDto.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         return ResponseDto.instance(userDto);
+    }
+
+    @RequestMapping(value = "/queryUserList",method = RequestMethod.POST)
+    public ResponseDto queryUserList(@RequestBody UserQueryDto userQueryDto){
+        PagerResp<UserDto> pagerResp = userService.queryUserList(userQueryDto);
+        return ResponseDto.instance(pagerResp);
     }
 }

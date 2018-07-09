@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2018/7/4 9:59
  */
 @Data
-public class UserDto {
+public class UserQueryDto extends BaseQueryDto{
 
     private String userId;
 

@@ -11,28 +11,28 @@ import lombok.Data;
 public class ResponseDto {
 
     /**返回代码**/
-    private String resultCode;
+    private String code;
     /**返回结果**/
     private String resultMsg;
     /**返回数据**/
-    private Object resultObj;
+    private Object data;
 
-    public ResponseDto(String resultCode, String resultMsg, Object resultObj) {
-        this.resultCode = resultCode;
+    public ResponseDto(String code, String resultMsg, Object data) {
+        this.code = code;
         this.resultMsg = resultMsg;
-        this.resultObj = resultObj;
+        this.data = data;
     }
 
-    private ResponseDto(Object resultObj){
-        this.resultCode ="0000";
+    private ResponseDto(Object data){
+        this.code ="0000";
         this.resultMsg ="成功";
-        this.resultObj = resultObj;
+        this.data = data;
     }
 
     public ResponseDto() {
     }
 
-    public static ResponseDto instance(Object resultObj){
-        return new ResponseDto(resultObj);
+    public static ResponseDto instance(Object data){
+        return new ResponseDto(data);
     }
 }
