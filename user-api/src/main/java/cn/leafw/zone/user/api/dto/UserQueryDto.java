@@ -1,5 +1,6 @@
 package cn.leafw.zone.user.api.dto;
 
+import cn.leafw.zone.common.dto.BaseQueryDto;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.List;
  * @date 2018/7/4 9:59
  */
 @Data
-public class UserQueryDto extends BaseQueryDto{
+public class UserQueryDto extends BaseQueryDto {
 
     private String userId;
 

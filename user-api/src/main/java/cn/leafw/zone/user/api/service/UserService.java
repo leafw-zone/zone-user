@@ -1,10 +1,8 @@
 package cn.leafw.zone.user.api.service;
 
-import cn.leafw.zone.user.api.dto.PagerResp;
+import cn.leafw.zone.common.dto.PagerResp;
 import cn.leafw.zone.user.api.dto.UserDto;
 import cn.leafw.zone.user.api.dto.UserQueryDto;
-
-import java.util.List;
 
 /**
  * @author CareyWYR

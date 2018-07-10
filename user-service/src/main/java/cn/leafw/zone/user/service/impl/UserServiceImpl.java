@@ -1,6 +1,6 @@
 package cn.leafw.zone.user.service.impl;
 
-import cn.leafw.zone.user.api.dto.PagerResp;
+import cn.leafw.zone.common.dto.PagerResp;
 import cn.leafw.zone.user.api.dto.UserDto;
 import cn.leafw.zone.user.api.dto.UserQueryDto;
 import cn.leafw.zone.user.api.service.UserService;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
