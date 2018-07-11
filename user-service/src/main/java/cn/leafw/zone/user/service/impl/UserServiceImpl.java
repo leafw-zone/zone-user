@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService{
         },pageable);
 
         List<UserDto> userDtoList = new ArrayList<>();
-        for (UserInfo userInfo : userInfoPage) {
+        for (UserInfo userInfo : userInfoPage.getContent()) {
             UserDto userDto = new UserDto();
             BeanUtils.copyProperties(userInfo,userDto);
             userDtoList.add(userDto);
