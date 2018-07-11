@@ -12,3 +12,8 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 0
+    host: localhost
+    password:
+    port: 6379
