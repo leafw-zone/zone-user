@@ -28,16 +28,20 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResponseDto login(@RequestBody UserDto userDto){
-        UserResultDto userResultDto = new UserResultDto();
-        userResultDto.setToken("---");
-        return ResponseDto.instance(userResultDto);
+        LoginDto loginDto = new LoginDto();
+        loginDto.setToken("---");
+
+        return ResponseDto.instance(loginDto);
     }
 
     @RequestMapping(value = "/logout",method = RequestMethod.POST)
     public ResponseDto logout(){
-        UserResultDto userResultDto = new UserResultDto();
-        userResultDto.setToken("---");
-        return ResponseDto.instance(userResultDto);
+        LoginDto loginDto = new LoginDto();
+        loginDto.setToken("---");
+        List<String> roles = new ArrayList<>();
+        roles.add("admin");
+        loginDto.setRoles(roles);
+        return ResponseDto.instance(loginDto);
     }
 
 
