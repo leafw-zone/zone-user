@@ -46,7 +46,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/info",method = RequestMethod.GET)
-    public ResponseDto info(@RequestParam(value = "token") String token){
+    public ResponseDto info(){
         UserDto userDto = new UserDto();
         userDto.setName("admin");
         List<String> roles = new ArrayList<>();
