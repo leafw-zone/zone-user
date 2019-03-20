@@ -5,6 +5,7 @@ import cn.leafw.zone.common.dto.ResponseDto;
 import cn.leafw.zone.user.api.dto.*;
 import cn.leafw.zone.user.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ public class UserController {
     public ResponseDto login(@RequestBody UserDto userDto){
         LoginDto loginDto = new LoginDto();
         loginDto.setToken("---");
-
+        if(!userDto.getUserName().equals("carey") || !userDto.getPassword().equals("12345")){
+            return ResponseDto.instance(null);
+        }
         return ResponseDto.instance(loginDto);
     }
 
@@ -60,5 +63,13 @@ public class UserController {
     public ResponseDto queryUserList(@RequestBody UserQueryDto userQueryDto){
         PagerResp<UserDto> pagerResp = userService.queryUserList(userQueryDto);
         return ResponseDto.instance(pagerResp);
+    }
+
+    @RequestMapping(value = "/checkUserLogin", method = RequestMethod.GET)
+    public ResponseDto checkUserLogin(@RequestParam("userName") String userName, @RequestParam("password") String password){
+        if("carey".equals(userName) && "10086".equals(password)){
+            return ResponseDto.instance("ok");
+        }
+        return ResponseDto.instance(null);
     }
 }

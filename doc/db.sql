@@ -16,4 +16,4 @@ CREATE TABLE `user_info` (
   `update_by` varchar(20) DEFAULT NULL,
   `update_time` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
