@@ -31,10 +31,15 @@ public class UserController {
     public ResponseDto login(@RequestBody UserDto userDto){
         LoginDto loginDto = new LoginDto();
         loginDto.setToken("---");
-        if(!userDto.getUserName().equals("carey") || !userDto.getPassword().equals("12345")){
-            return ResponseDto.instance(null);
-        }
         return ResponseDto.instance(loginDto);
+    }
+
+    @RequestMapping(value = "/checkUserLogin", method = RequestMethod.GET)
+    public ResponseDto checkUserLogin(@RequestParam("userName") String userName, @RequestParam("password") String password){
+        if("carey".equals(userName) && "10086".equals(password)){
+            return ResponseDto.instance("ok");
+        }
+        return ResponseDto.instance(null);
     }
 
     @RequestMapping(value = "/logout",method = RequestMethod.POST)
@@ -65,11 +70,4 @@ public class UserController {
         return ResponseDto.instance(pagerResp);
     }
 
-    @RequestMapping(value = "/checkUserLogin", method = RequestMethod.GET)
-    public ResponseDto checkUserLogin(@RequestParam("userName") String userName, @RequestParam("password") String password){
-        if("carey".equals(userName) && "10086".equals(password)){
-            return ResponseDto.instance("ok");
-        }
-        return ResponseDto.instance(null);
-    }
 }
